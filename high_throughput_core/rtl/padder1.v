@@ -21,13 +21,13 @@ module padder1(in, byte_num, out);
   
   always @ (*)
     case (byte_num)
-      0: out = 64'h0600000000000000;
+      0: out =           64'h0600000000000000;
       1: out = {in63:56, 56'h06000000000000};
       2: out = {in63:48, 48'h060000000000};
       3: out = {in63:40, 40'h0600000000};
       4: out = {in63:32, 32'h06000000};
       5: out = {in63:24, 24'h060000};
       6: out = {in63:16, 16'h0600};
-      7: out = {in63:8, 8'h06};
+      7: out = {in63:8,   8'h06};
     endcase
 endmodule
