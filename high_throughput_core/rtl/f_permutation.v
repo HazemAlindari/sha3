@@ -18,7 +18,7 @@
 
 module f_permutation(clk, reset, in, in_ready, ack, out, out_ready);
     input               clk, reset;
-    input      [575:0]  in;
+    input      [1087:0]  in;
     input               in_ready;
     output              ack;
     output reg [1599:0] out;
@@ -53,7 +53,7 @@ module f_permutation(clk, reset, in, in_ready, ack, out, out_ready);
       else if (i[10]) // only change at the last round
         out_ready <= 1;
 
-    assign round_in = accept ? {in ^ out[1599:1599-575], out[1599-576:0]} : out;
+    assign round_in = accept ? {in ^ out[1599:1599-1087], out[1599-1087:0]} : out;
 
     rconst2in1
       rconst_ ({i, accept}, rc1, rc2);

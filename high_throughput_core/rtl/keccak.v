@@ -40,11 +40,11 @@ module keccak(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
     wire               f_ack;
     wire      [1599:0] f_out;
     wire               f_out_ready;
-    wire       [511:0] out1;      /* before reorder byte */
+    wire       [255:0] out1;      /* before reorder byte */
     reg        [10:0]  i;         /* gen "out_ready" */
     genvar w, b;
 
-    assign out1 = f_out[1599:1599-511];
+    assign out1 = f_out[1599:1599-255];
 
     always @ (posedge clk)
       if (reset)

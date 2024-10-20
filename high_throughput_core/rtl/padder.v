@@ -24,7 +24,7 @@ module padder(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
     input              in_ready, is_last;
     input      [2:0]   byte_num;
     output             buffer_full; /* to "user" module */
-    output reg [575:0] out;         /* to "f_permutation" module */
+    output reg [1087:0] out;         /* to "f_permutation" module */
     output             out_ready;   /* to "f_permutation" module */
     input              f_ack;       /* from "f_permutation" module */
     
@@ -46,7 +46,7 @@ module padder(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
       if (reset)
         out <= 0;
       else if (update)
-        out <= {out[575-64:0], v1};
+        out <= {out[1087-64:0], v1};
 
     always @ (posedge clk)
       if (reset)
@@ -80,9 +80,9 @@ module padder(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
         else if (is_last == 0)
           v1 = in;
         else
-          begin
+        begin
             v1 = v0;
             v1[7] = v1[7] | i[7];
-          end
+        end
       end
 endmodule
